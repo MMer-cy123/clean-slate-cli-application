@@ -1,11 +1,10 @@
 from sqlalchemy import create_engine, desc
 from sqlalchemy import (CheckConstraint, UniqueConstraint,
                         Column, DateTime, Integer, String, ForeignKey)
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship, backref, sessionmaker
 
 from sqlalchemy.ext.declarative import declarative_base
 
-engine = create_engine('sqlite:///clean_slate.db')
 
 Base = declarative_base()
 
@@ -90,6 +89,10 @@ class ClientTask(Base):
     def __repr__(self):
         return f'ClientTask(game_id={self.client_id}, ' + \
             f'task_id={self.task_id})'
+engine = create_engine('sqlite:///clean_slate.db')
+#Base.metadata.create_all(engine)
+Session = sessionmaker(bind=engine)
+session = Session()
 
 
 # debug.py

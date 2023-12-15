@@ -10,8 +10,10 @@ alembic = "*"
 importlib-metadata = "*"
 importlib-resources = "*"
 faker = "*"
+click = "*"
+rich = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.10.13"
+python_version = "3.11.4"
